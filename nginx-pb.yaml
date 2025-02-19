@@ -1,0 +1,15 @@
+---
+- name: installing and starting nginx service
+  hosts: all
+  become: yes #this is to give root permission
+
+  tasks:
+  - name: installing nginx-server
+    apt:
+      name: nginx
+      state: present
+  - name: starting nginx-service
+    service:
+      name: nginx
+      state: started
+      enabled: yes
