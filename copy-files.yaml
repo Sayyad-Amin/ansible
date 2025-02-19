@@ -1,0 +1,10 @@
+---
+- name: copying PB
+  hosts: all
+  become: true
+
+  tasks:
+  - name: copy-task
+    copy:
+      src: /home/test.txt
+      dest: /
