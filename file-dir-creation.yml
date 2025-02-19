@@ -1,0 +1,28 @@
+---
+- name: file module
+  hosts: webserver
+  become: yes
+
+  tasks:
+  - name: group create
+    group:
+      name: dev
+      state: present
+
+  - name: user create
+    user:
+      name: faisal
+      group: dev
+
+  - name: file creation
+    file:
+      path: /home/alnafi.txt
+      state: touch
+      owner: faisal
+      group: dev
+      mode: u=rx,g=r,o=r
+
+  - name: directory creation
+    file:
+      path: /home/docker
+      state: directory
